@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import RepositoryItem from "../RepositoryItem"
 
 import './styles.scss';
 
-export default function RepositoryList() {
-  const [repositories, setRepositories] = useState([]);
+interface IRepository {
+  name: string;
+  description: string;
+  link: string;
+}
+
+interface IRepositoryFetch {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
+const RepositoryList: FC = () => {
+  const [repositories, setRepositories] = useState<IRepository[]>([]);
 
   useEffect(() => {
     function getRepository() {
       fetch('https://api.github.com/orgs/rocketseat/repos')
         .then(response => response.json())
-        .then(data => setRepositories(data.map(repos => {
+        .then(data => setRepositories(data.map((repos: IRepositoryFetch) => {
           return { name: repos.name, description: repos.description, link: repos.html_url }
         })))
         .catch(error => console.log(error.message));
@@ -31,3 +43,5 @@ export default function RepositoryList() {
     </section>
   )
 }
+
+export default RepositoryList;
