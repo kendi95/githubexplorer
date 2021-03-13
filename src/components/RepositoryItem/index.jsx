@@ -1,6 +1,8 @@
+import './styles.scss';
+
 export default function RepositoryItem({ repository }) {
   return (
-    <li>
+    <li className="repository-item">
       <strong>{repository?.name ?? 'Default'}</strong>
       <p>{repository?.description ?? ''}</p>
 
