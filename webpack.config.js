@@ -5,7 +5,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
-  devTool: isDevelopment ? 'eval-source-map' : 'source-map',
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   entry: resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: resolve(__dirname, 'dist'),
