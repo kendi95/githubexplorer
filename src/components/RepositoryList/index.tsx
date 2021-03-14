@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import RepositoryItem from "../RepositoryItem"
+import RepositoryItem from "../RepositoryItem";
+import api from '../../services/api';
 
 import './styles.scss';
 
@@ -19,13 +20,15 @@ const RepositoryList: FC = () => {
   const [repositories, setRepositories] = useState<IRepository[]>([]);
 
   useEffect(() => {
-    function getRepository() {
-      fetch('https://api.github.com/orgs/rocketseat/repos')
-        .then(response => response.json())
-        .then(data => setRepositories(data.map((repos: IRepositoryFetch) => {
+    async function getRepository() {
+      try {
+        const response = await api.get<IRepositoryFetch[]>('/orgs/rocketseat/repos');
+        setRepositories(response.data.map(repos => {
           return { name: repos.name, description: repos.description, link: repos.html_url }
-        })))
-        .catch(error => console.log(error.message));
+        }));
+      } catch (error) {
+        console.log(error.message);
+      }
     }
 
     getRepository()
