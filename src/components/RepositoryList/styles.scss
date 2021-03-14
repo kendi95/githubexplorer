@@ -1,11 +1,66 @@
-.repository-list {
-  margin: 40px;
+h1 {
+  padding: 40px 0 0 80px;
+  height: 100%;
+  min-width: 55vw;
+  width: 78.9%;
+  position: absolute;
+  top: 0;
+  left: 500px;
+  font-size: 36px;
+}
 
-  h1 {
-    margin-bottom: 16px;
+.repository-list {
+  margin-left: 40px;
+  margin-top: 100px;
+  padding-left: 40px;
+  height: 89vh;
+  width: 78.9%;
+  position: absolute;
+  top: 0;
+  left: 500px;
+  overflow-y: scroll;
+
+  border-left: 1px solid #777;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #efefef;
+    border-radius: 8px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #c3c2c2;
+    }
   }
 
   ul {
     list-style: none;
+
+    .repository-list-next {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      svg {
+        font-size: 36px;
+        color: #fff;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #8257e6;
+        }
+      }
+    }
   }
 }

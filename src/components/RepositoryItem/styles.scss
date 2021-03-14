@@ -1,18 +1,33 @@
 li.repository-item {
+  width: 98%;
+  border: 2px solid #8257e6;
+  border-radius: 16px;
+  padding: 16px;
+
   & + li {
     margin-top: 20px;
   }
 
+  strong {
+    font-size: 24px;
+  }
+
   p {
-    font-size: 14px;
-    color: #444;
+    font-size: 16px;
+    color: #efefef;
     margin-top: 8px;
   }
 
   a {
-    display: inline-block;
-    margin-top: 16px;
+    width: 8%;
+    display: flex;
+    margin-top: 18px;
     text-decoration: none;
     color: #8257e6;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #9d7fe2;
+    }
   }
 }
